@@ -1,0 +1,142 @@
+    
+
+/* Desktop screen size */
+    @media (min-width:0px) and (max-width:1700px){
+      .container {
+        opacity: 0.7;
+      }
+      .grid-container {
+        display: grid;
+        margin-top: 5%;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 20px;
+        border-radius:4px;
+        border: 3x solid rgba(58, 54, 54, 0.419);
+        background-color: rgba(89, 93, 93, 0.105);
+ 
+      }
+
+    body{
+      background-image: url(./images/batman-background.jpg);
+      background-position: center;
+      background-size:cover;
+      background-attachment: fixed;
+      /* background-color: powderblue; */
+    } 
+    
+    
+    
+    .pressed {
+      box-shadow: 0 3px 4px 0 #f7f7f795;;
+      opacity: 0.3;
+    }
+    
+    h4{
+      text-align: left;
+      text-shadow: 1px 0 rgb(121, 103, 103);
+      color: beige;
+    }
+    
+     .container1{
+      width: 100%;
+      background-color: rgba(145, 178, 189, 0.138);
+      position: relative;
+      border: 3x solid rgba(58, 54, 54, 0.419);
+      border-radius:5px;
+      font-size: 1rem;
+      flex: 1 1 0; 
+
+    }
+    .container1 > .first-image{
+      height: 70px;
+      width: 75px;
+      float: left;
+    }
+    .container1 >  .para1{
+      font-family: "Arvo", cursive;
+      color: beige;
+    }
+    
+
+
+    .container2{
+      width: 100%;
+      background-color: rgba(145, 178, 189, 0.138);
+      position: relative;
+      border: 3x solid rgba(58, 54, 54, 0.419);
+      border-radius:5px;
+      font-size: 1rem;
+      flex: 1 1 0; 
+
+  }
+  .container2 > .second-image{
+    height: 70px;
+    width: 60px;
+    float: left;
+  }
+  .container2 > .para2{
+    font-family: "Arvo", cursive;
+    color: beige;
+  }
+    
+
+
+  .container3{
+    width: 100%;
+    background-color: rgba(145, 178, 189, 0.138);
+    position: relative;
+    border: 3x solid rgba(58, 54, 54, 0.419);
+    border-radius:5px;
+    margin-top: 10px;
+    font-size: 1rem;
+    flex: 1 1 0; 
+
+}
+.container3 > .third-image{
+  height: 70px;
+  width: 60px;
+  float: left;
+}
+.container3 > .para3{
+  font-family: "Arvo", cursive;
+  color: beige;
+}
+
+.container4{
+  width: 100%;
+  background-color: rgba(145, 178, 189, 0.138);
+      position: relative;
+      border: 3x solid rgba(58, 54, 54, 0.419);
+  margin-top: 10px;
+  border-radius:5px;
+  font-size: 1rem;
+  flex: 1 1 0; 
+
+}
+
+.container4 > .fourth-image{
+height: 80px;
+width: 60px;
+float: left;
+}
+.container4 > .para4{
+    font-family: "Arvo", cursive;
+    color: beige;
+    
+}
+  #footer{
+    background-color: rgba(52, 52, 52, 0.093);
+    color: rgb(248, 248, 248);
+    text-align: center;
+    margin-top: 100%;
+    
+}
+
+h5{
+  color: rgb(248, 248, 248);
+}
+
+}
+  
+  
