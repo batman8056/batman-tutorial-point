@@ -20,7 +20,9 @@
     body{
       background-color: rgba(56, 198, 241, 0.959);
     } 
-    
+    .h7{
+      size: 2rem;
+    }
     
     .pressed {
       box-shadow: 0 3px 4px 0 #f7f7f795;;
