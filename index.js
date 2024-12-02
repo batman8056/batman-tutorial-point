@@ -14,7 +14,7 @@ for (var i = 0; i < numberOfButton; i++) {
 
 // debugger;
 function makeSound(key){
-    // alert("Wait I Can Read For You!...")
+    alert("Wait I Can Read For You!...")
     switch (key) {
         case "HTML Vision Statement:":
             var html = new Audio('./audio/welcome to html.mp3');
