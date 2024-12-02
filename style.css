@@ -50,7 +50,7 @@
     .container1 >  .para1{
       font-family: "Arvo", cursive;
       color: rgb(255, 255, 255);
-      font-size: .8rem;
+      font-size: .9rem;
     }
     
 
@@ -72,7 +72,7 @@
   .container2 > .para2{
     font-family: "Arvo", cursive;
     color: rgb(255, 255, 255);
-    font-size: .8rem;
+    font-size: .9rem;
   }
     
 
@@ -95,7 +95,7 @@
 .container3 > .para3{
   font-family: "Arvo", cursive;
   color: rgb(255, 255, 255);
-  font-size: .8rem;
+  font-size: .9rem;
 }
 
 .container4{
@@ -117,7 +117,7 @@ float: left;
 .container4 > .para4{
     font-family: "Arvo", cursive;
     color: rgb(255, 255, 255);
-    font-size: .8rem;
+    font-size: .9rem;
     
 }
 .container5{
