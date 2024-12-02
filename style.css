@@ -1,10 +1,9 @@
-    
+
 
 /* Desktop screen size */
 
-    @media (min-width:0px) and (max-width:1700px){
       .container {
-        opacity: 0.6;
+        opacity: 1;
       }
       .grid-container {
         display: grid;
@@ -19,13 +18,8 @@
       }
 
     body{
-      background-image: url(./images/batman-background.jpg);
-      background-position: center;
-      background-size:cover;
-      background-attachment: fixed;
-      /* background-color: powderblue; */
+      background-color: rgba(56, 198, 241, 0.959);
     } 
-    
     
     
     .pressed {
@@ -35,8 +29,8 @@
     
     h4{
       text-align: left;
-      text-shadow: 1px 0 rgb(121, 103, 103);
-      color: beige;
+      text-shadow: 2px 0 rgba(65, 62, 62, 0.847);
+      color: rgb(255, 255, 255);
     }
     
      .container1{
@@ -45,7 +39,6 @@
       position: relative;
       border: 3x solid rgba(58, 54, 54, 0.419);
       border-radius:5px;
-      font-size: 1rem;
       flex: 1 1 0; 
 
     }
@@ -56,7 +49,8 @@
     }
     .container1 >  .para1{
       font-family: "Arvo", cursive;
-      color: beige;
+      color: rgb(255, 255, 255);
+      font-size: .8rem;
     }
     
 
@@ -67,7 +61,6 @@
       position: relative;
       border: 3x solid rgba(58, 54, 54, 0.419);
       border-radius:5px;
-      font-size: 1rem;
       flex: 1 1 0; 
 
   }
@@ -78,7 +71,8 @@
   }
   .container2 > .para2{
     font-family: "Arvo", cursive;
-    color: beige;
+    color: rgb(255, 255, 255);
+    font-size: .8rem;
   }
     
 
@@ -90,7 +84,6 @@
     border: 3x solid rgba(58, 54, 54, 0.419);
     border-radius:5px;
     margin-top: 10px;
-    font-size: 1rem;
     flex: 1 1 0; 
 
 }
@@ -101,17 +94,17 @@
 }
 .container3 > .para3{
   font-family: "Arvo", cursive;
-  color: beige;
+  color: rgb(255, 255, 255);
+  font-size: .8rem;
 }
 
 .container4{
   width: 100%;
   background-color: rgba(145, 178, 189, 0.138);
-      position: relative;
-      border: 3x solid rgba(58, 54, 54, 0.419);
+  position: relative;
+  border: 3x solid rgba(58, 54, 54, 0.419);
   margin-top: 10px;
   border-radius:5px;
-  font-size: 1rem;
   flex: 1 1 0; 
 
 }
@@ -123,7 +116,8 @@ float: left;
 }
 .container4 > .para4{
     font-family: "Arvo", cursive;
-    color: beige;
+    color: rgb(255, 255, 255);
+    font-size: .8rem;
     
 }
 .container5{
@@ -148,6 +142,5 @@ float: left;
   
 }
 
-}
-  
+
   
