@@ -1,111 +1,104 @@
 
 
-/* Desktop screen size */
-
-      .container {
-        opacity: 1;
-      }
-      .grid-container {
-        display: grid;
-        margin-top: 5%;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto auto;
-        gap: 20px;
- 
-      }
-
-    body{
-      background-color: rgba(56, 198, 241, 0.959);
-    } 
-    .h7{
-      size: 2rem;
-    }
-    
-    .pressed {
-      box-shadow: 0 3px 4px 0 #f7f7f795;;
-      opacity: 0.3;
-    }
-    
-    h4{
-      text-align: left;
-      text-shadow: 2px 0 rgba(65, 62, 62, 0.847);
-      color: rgb(255, 255, 255);
-      font-size: 1.5rem;
-    }
-    
-     .container1{
-      width: 100%;
-      background-color: #8baca904;
-      position: relative;
-      border: 2px solid rgba(4, 4, 4, 0.41);
-      border-radius:5px;
-      flex: 1 1 0; 
-
-    }
-    .container1 > .first-image{
-      height: 70px;
-      width: 75px;
-      float: left;
-    }
-    .container1 >  .para1{
-      font-family: "Arvo", cursive;
-      color: rgb(255, 255, 255);
-      font-size: .9rem;
-    }
-    
-
-
-    .container2{
-      width: 100%;
-      background-color: #8baca904;
-      position: relative;
-      border: 2px solid rgba(4, 4, 4, 0.41);
-      border-radius:5px;
-      flex: 1 1 0; 
-
+@media (min-width: 0px) and (max-width: 767px) { 
+  
+  body{
+    background-color: rgba(56, 198, 241, 0.959);
+  } 
+  .h7{
+    size: 2rem;
   }
-  .container2 > .second-image{
-    height: 70px;
-    width: 60px;
-    float: left;
+  
+  .pressed {
+    box-shadow: 0 3px 4px 0 #f7f7f795;;
+    opacity: 0.3;
   }
-  .container2 > .para2{
-    font-family: "Arvo", cursive;
-    color: rgb(255, 255, 255);
-    font-size: .9rem;
-  }
-    
+  
+.pressed {
+  box-shadow: 0 3px 4px 0 #f7f7f795;
+  opacity: 0.3;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+  
+}
 
+h4{
+  text-align: left;
+  text-shadow: 1px 0 rgb(119, 87, 87);
+}
 
-  .container3{
+.container1{
     width: 100%;
-    background-color: #8baca904;
-    position: relative;
-    border: 2px solid rgba(4, 4, 4, 0.41);
-    border-radius:5px;
     margin-top: 10px;
+    background-color: rgba(250, 100, 0, 0.811);
+    position: relative;
+    border: 3px solid black;
+    border-radius: 2.5%;
     flex: 1 1 0; 
+    
+
+}
+.container1 > .first-image{
+  height: 70px;
+  width: 70px;
+  float: left;
+
+}
+.container1 > .para1{
+  font-family: "Arvo", cursive;
+font-size: 7.5px;
+}
+.container2{
+  width: 100%;
+  margin-top: 10px;
+  background-color: rgb(139, 160, 244);
+  border: 3px solid black;
+  position: relative;
+  border-radius: 2.5%;
+  flex: 1 1 0; 
+
+}
+.container2 > .second-image{
+height: 70px;
+width: 60px;
+float: left;
+}
+.container2 > .para2{
+font-family: "Arvo", cursive;
+font-size: 7.5px;
+}
+
+.container3{
+width: 100%;
+background-color: rgb(220, 220, 34);
+position: relative;
+border: 3px solid black;
+margin-top: 10px;
+border-radius: 2.5%;
+flex: 1 1 0; 
 
 }
 .container3 > .third-image{
-  height: 70px;
-  width: 60px;
-  float: left;
+height: 70px;
+width: 60px;
+float: left;
 }
 .container3 > .para3{
-  font-family: "Arvo", cursive;
-  color: rgb(255, 255, 255);
-  font-size: .9rem;
+font-family: "Arvo", cursive;
+font-size: 7.5px;
 }
-
 .container4{
-  width: 100%;
-  background-color: #8baca904;
-  position: relative;
-  border: 2px solid rgba(4, 4, 4, 0.41);
-  margin-top: 10px;
-  border-radius:5px;
-  flex: 1 1 0; 
+width: 100%;
+background-color: rgb(244, 141, 7);
+position: relative;
+border: 3px solid black;
+margin-top: 10px;
+border-radius: 2.5%;
+flex: 1 1 0; 
 
 }
 
@@ -115,27 +108,254 @@ width: 60px;
 float: left;
 }
 .container4 > .para4{
+font-family: "Arvo", cursive;
+font-size: 7.5px;
+}
+}
+/* @media (min-width:0px) and (max-width:480px){
+
+.pressed {
+  box-shadow: 0 3px 4px 0 #f7f7f795;
+  opacity: 0.3;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+  
+}
+
+h4{
+  text-align: left;
+  text-shadow: 1px 0 rgb(119, 87, 87);
+}
+
+.container1{
+    width: 100%;
+    margin-top: 10px;
+    background-color: rgba(250, 100, 0, 0.811);
+    position: relative;
+    border: 3px solid black;
+    border-radius: 2.5%;
+    flex: 1 1 0; 
+    
+
+}
+.container1 > .first-image{
+  height: 70px;
+  width: 70px;
+  float: left;
+
+}
+.container1 > .para1{
+  font-family: "Arvo", cursive;
+font-size: 7.5px;
+}
+.container2{
+  width: 100%;
+  margin-top: 10px;
+  background-color: rgb(139, 160, 244);
+  border: 3px solid black;
+  position: relative;
+  border-radius: 2.5%;
+  flex: 1 1 0; 
+
+}
+.container2 > .second-image{
+height: 70px;
+width: 60px;
+float: left;
+}
+.container2 > .para2{
+font-family: "Arvo", cursive;
+font-size: 7.5px;
+}
+
+.container3{
+width: 100%;
+background-color: rgb(220, 220, 34);
+position: relative;
+border: 3px solid black;
+margin-top: 10px;
+border-radius: 2.5%;
+flex: 1 1 0; 
+
+}
+.container3 > .third-image{
+height: 70px;
+width: 60px;
+float: left;
+}
+.container3 > .para3{
+font-family: "Arvo", cursive;
+font-size: 7.5px;
+}
+.container4{
+width: 100%;
+background-color: rgb(244, 141, 7);
+position: relative;
+border: 3px solid black;
+margin-top: 10px;
+border-radius: 2.5%;
+flex: 1 1 0; 
+
+}
+
+.container4 > .fourth-image{
+height: 80px;
+width: 60px;
+float: left;
+}
+.container4 > .para4{
+font-family: "Arvo", cursive;
+font-size: 7.5px;
+}
+
+} */
+
+/* Desktop screen size */
+@media (min-width: 768px) and (max-width: 1700px) {
+  .pressed {
+    box-shadow: 0 3px 4px 0 #f7f7f795;
+    opacity: 0.3;
+  }
+    .container {
+      opacity: 1;
+    }
+    .grid-container {
+      display: grid;
+      margin-top: 5%;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 20px;
+
+    }
+
+  body{
+    background-color: rgba(56, 198, 241, 0.959);
+  } 
+  .h7{
+    size: 2rem;
+  }
+  
+  .pressed {
+    box-shadow: 0 3px 4px 0 #f7f7f795;;
+    opacity: 0.3;
+  }
+  
+  h4{
+    text-align: left;
+    text-shadow: 2px 0 rgba(65, 62, 62, 0.847);
+    color: rgb(255, 255, 255);
+    font-size: 1.5rem;
+  }
+  
+   .container1{
+    width: 100%;
+    background-color: #8baca904;
+    position: relative;
+    border: 2px solid rgba(4, 4, 4, 0.41);
+    border-radius:5px;
+    flex: 1 1 0; 
+
+  }
+  .container1 > .first-image{
+    height: 70px;
+    width: 75px;
+    float: left;
+  }
+  .container1 >  .para1{
     font-family: "Arvo", cursive;
     color: rgb(255, 255, 255);
     font-size: .9rem;
-    
-}
-.container5{
-  color: rgb(248, 248, 248);
-}
-  #footer{
-    background-color: rgba(52, 52, 52, 0.093);
-    color: rgb(248, 248, 248);
-    text-align: center;
-    margin-top: 5%;
-    
-}
+  }
+  
 
 
- .h7{
-  color: black;
+  .container2{
+    width: 100%;
+    background-color: #8baca904;
+    position: relative;
+    border: 2px solid rgba(4, 4, 4, 0.41);
+    border-radius:5px;
+    flex: 1 1 0; 
+
+}
+.container2 > .second-image{
+  height: 70px;
+  width: 60px;
+  float: left;
+}
+.container2 > .para2{
+  font-family: "Arvo", cursive;
+  color: rgb(255, 255, 255);
+  font-size: .9rem;
+}
+  
+
+
+.container3{
+  width: 100%;
+  background-color: #8baca904;
+  position: relative;
+  border: 2px solid rgba(4, 4, 4, 0.41);
+  border-radius:5px;
+  margin-top: 10px;
+  flex: 1 1 0; 
+
+}
+.container3 > .third-image{
+height: 70px;
+width: 60px;
+float: left;
+}
+.container3 > .para3{
+font-family: "Arvo", cursive;
+color: rgb(255, 255, 255);
+font-size: .9rem;
+}
+
+.container4{
+width: 100%;
+background-color: #8baca904;
+position: relative;
+border: 2px solid rgba(4, 4, 4, 0.41);
+margin-top: 10px;
+border-radius:5px;
+flex: 1 1 0; 
+
+}
+
+.container4 > .fourth-image{
+height: 80px;
+width: 60px;
+float: left;
+}
+.container4 > .para4{
+  font-family: "Arvo", cursive;
+  color: rgb(255, 255, 255);
+  font-size: .9rem;
   
 }
+.container5{
+color: rgb(248, 248, 248);
+}
+#footer{
+  background-color: rgba(52, 52, 52, 0.093);
+  color: rgb(248, 248, 248);
+  text-align: center;
+  margin-top: 5%;
+  
+}
+
+
+.h7{
+color: black;
+
+}
+  }
+    
 
 
   
