@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "<h1 align=\"center\">Hi 👋, I'm Manikandan</h1>\r <h3 align=\"center\">A passionate frontend and backend developer from India</h3>",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
