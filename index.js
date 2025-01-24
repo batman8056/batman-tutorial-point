@@ -28,7 +28,7 @@ app.use(express.static("public"));
 
 // Route for login page (GET)
 app.get('/', (req, res) => {
-  res.render('login.ejs');
+  res.render('index.ejs');
 });
 
 
