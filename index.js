@@ -19,12 +19,18 @@ const PORT = 3000;
 const saltRounds = 10;
 env.config();
 
-// Set the views directory inside src
-app.set('views', path.join(__dirname, 'src', 'views'));
 
 // Set the view engine to EJS
-app.set('view engine', 'ejs');
-app.use(express.static("public"));
+app.set("view engine", "ejs");
+
+// Set the views directory inside src
+app.set("views", path.join(__dirname, "src", "views"));
+
+// Serve static files from the "public" directory
+app.use(express.static(path.join(__dirname, "public")));
+
+//Use middleware like body-parser (now built into Express) to parse incoming request data
+app.use(express.urlencoded({ extended: true }));
 
 // Route for login page (GET)
 app.get('/', (req, res) => {
