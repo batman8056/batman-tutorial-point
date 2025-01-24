@@ -133,7 +133,7 @@ app.post("/signin-form", async (req, res) => {
           console.error("Error hashing password:", err);
         } else {
           console.log("Hashed Password:", hash);
-          await db.query(
+          const result = await db.query(
             "INSERT INTO users_profiles (username, email, password, dob, gender) VALUES ($1, $2, $3, $4, $5)",
             [regUserName, regEmail, hash, regDob, regGender]
           );
