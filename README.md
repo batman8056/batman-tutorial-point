@@ -44,6 +44,8 @@ This project is a user authentication system that uses Node.js, Express.js, Post
 - 3. Database Setup
 - 4. Environment Variables
 - 5. Execution Steps
+- 5. Folder Structur
+- 6. Related
 
 
 ## 1. Installation
@@ -113,7 +115,23 @@ Start the server
 ```bash
   node index.js
 ```
+## 6. Folder Structur
 
+project/
+│
+├── src/
+│   ├── views/            # EJS templates
+│   ├── routes/           # Route handlers
+│   ├── controllers/      # Business logic
+│
+├── public/               # Static files (CSS, JS, images)
+│   ├── css/              # Stylesheets
+│   ├── images/           # Images
+│
+├── .env                  # Environment variables
+├── package.json          # Dependencies and scripts
+├── index.js              # Main server file
+└── README.md             # Project documentation
 
 ## Related
 
