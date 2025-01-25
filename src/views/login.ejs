@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batman Tutorial Point Login</title>
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="icon" href="./icon/avatar.png">
+    
+</head>
+<body>
+
+    <div class="box">
+    <img src="./icon/avatar.png" class="avatar" alt="Avatar">
+    <h2>Login</h2>
+    <!-- Display error message -->
+    <% if (error && error.length > 0) { %>
+        <div class="error-message">
+          <%= error[0] %>
+        </div>
+      <% } %>
+    <form action="/login" method="POST">
+        <!-- Username Input -->
+        <div class="inputbox">
+            <input type="text" name="username" placeholder="" required>
+            <label>Username</label>
+        </div>
+
+        <!-- Password Input -->
+        <div class="inputbox">
+            <input type="password" name="password" placeholder="" required>
+            <label>Password</label>
+        </div>
+
+        <!-- Submit Button -->
+        <input type="submit" value="Log in">
+        
+        <!-- Forgot Password Link -->
+        <div id="container">
+            <center>
+                <a href="/forgot-password" class="forgot-link">Forgot password?</a>
+            </center>
+        </div>
+
+        <!-- Signup Link -->
+        <center>
+            <h3>Don't have an account? 
+                <a href="/signup" class="signup-link">Sign in</a>
+            </h3>
+        </center>
+        
+        <!-- Divider -->
+        <div class="divider">
+          <span>or</span>
+      </div>
+        
+          <button type="button" class="btn-google" href="/auth/google" role="button">
+            <i class="fab fa-google"></i> Sign In with Google
+        </button>
+            
+            
+    </form>
+</div>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batman Tutorial Point Sign-In</title>
+    <link rel="stylesheet" href="./css/signup.css">
+    <link rel="icon" href="./icon/avatar.png">
+    
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Sign In</h2>
+        <!-- Display Error Message -->
+        <% if (error) { %>
+            <div class="error-message">
+                <%= error %>
+            </div>
+        <% } %>
+        <form action="/signin-form" method="POST">
+            <!-- Username Section -->
+            <div class="inputbox">
+                <!-- <h3>Username</h3> -->
+                <input type="text" id="username" name="username" value="<%= username || '' %>" placeholder="" required>
+                <label>Username</label>
+            </div>
+
+            <!-- Password Section -->
+            <div class="inputbox">
+                <!-- <h3>Password</h3> -->
+                <input type="password" id="password" name="password" placeholder="" required>
+                <label>Password</label>
+            </div>
+
+            <!-- Email Section -->
+            <div class="inputbox">
+                <!-- <h3>Email</h3> -->
+                <input type="email" id="email" name="email" value="<%= email || '' %>" placeholder="" required>
+                <label>Email</label>
+                
+            </div>
+            <br>
+            <!-- Date of Birth Input -->
+            <div class="inputbox">
+                <input type="date" name="dob"  placeholder="" required>
+                <label>Date of Birth</label>
+            </div>
+            <!-- Gender Section -->
+            <div class="form-group">
+                <!-- <label>Gender</label> -->
+                <h3>Gender</h3>
+                <div class="gender-options">
+                    <label><input type="radio" name="gender" value="male" required> Male</label>
+                    <label><input type="radio" name="gender" value="female" required> Female</label>
+                </div>
+            </div>
+            
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button type="submit">Sign In</button>
+            </div>
+            <!-- Divider -->
+        <div class="divider">
+            <span>or</span>
+        </div>
+            <button type="button" class="btn-google" href="/auth/google" role="button">
+              <i class="fab fa-google"></i> Sign In with Google
+          </button>
+
+        </form>
+    </div>
+
+</body>
+</html>
