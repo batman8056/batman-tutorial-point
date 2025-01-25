@@ -156,4 +156,4 @@ Here are some related referance
 
 ## License
 
-[Manikandan Pandian](https://github.com/batman8056)
+This project is licensed under [Manikandan Pandian](https://github.com/batman8056)
