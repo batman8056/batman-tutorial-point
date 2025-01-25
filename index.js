@@ -8,6 +8,7 @@ import session from "express-session";
 import passport from "passport";
 import { Strategy } from "passport-local";
 import env from 'dotenv';
+import flash from "connect-flash";
 import GoogleStrategy from 'passport-google-oauth2';
 
 // Create __dirname in ES modules
@@ -29,6 +30,21 @@ app.use(express.static(path.join(__dirname, "public")));
 //Use middleware like body-parser (now built into Express) to parse incoming request data
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// created a session 
+app.use(session({
+  secret:process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 1000 * 60 *60 * 24,
+  }
+}))
+app.use(flash());
+app.use((req, res, next) => {
+  res.locals.error = req.flash("error");
+  next();
+});
+
 //db configuration
 const db = new pg.Client({
   user:process.env.PG_USER,
@@ -39,21 +55,9 @@ const db = new pg.Client({
 });
 db.connect();
 
-// created a session 
-app.use(session({
-  secret:process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: true,
-  cookie: {
-    maxAge: 1000 * 60 *60 * 24,
-  }
-}))
-
 //after created of session we need to initialize the session using passport
 app.use(passport.initialize());
 app.use(passport.session());
-
-
 
 // Route for login page (GET)
 app.get('/', (req, res) => {
@@ -63,8 +67,10 @@ app.get('/', (req, res) => {
 app.get('/forgot-password', (req, res) => {
   res.render('forgot-password.ejs');
 });
-app.get('/login', (req, res) => {
-  res.render('login.ejs');
+
+app.get("/login", (req, res) => {
+  if (req.isAuthenticated()) return res.redirect("/index");
+  res.render("login");
 });
 
 app.get('/signup', (req, res) => {
@@ -100,7 +106,8 @@ app.get("/logout", (req, res) => {
 app.post("/login", 
   passport.authenticate("local",{
   successRedirect: "/index",
-  failureRedirect: "/login"
+  failureRedirect: "/login",
+  failureFlash: true,
 })
 );
 
@@ -112,7 +119,6 @@ app.post("/signin-form", async (req, res) => {
   const regDob = req.body.dob
   const regGender = req.body.gender
   // console.log(regUserName,regPassword,regEmail,regDob,regGender);
-
   try{
     const checkResult = await db.query("SELECT * FROM users_profiles WHERE email = $1", [
       regEmail,
@@ -166,14 +172,14 @@ passport.use("local",
           return cb(err)
         } else {
           if (result) {
-            return cb(null, user, result);
+            return cb(null, user);
           } else {
-            return cb(null, false);
+            return cb(null, false, { message: "Incorrect password."});
           }
         }
       });
     } else {
-      return cb("user not found")
+      return cb(null, false, { message: "User not found."})
     }
   } catch (err) {
     return cb(err);

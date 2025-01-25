@@ -13,6 +13,12 @@
     <div class="box">
     <img src="./icon/avatar.png" class="avatar" alt="Avatar">
     <h2>Login</h2>
+    <!-- Display error message -->
+    <% if (error && error.length > 0) { %>
+        <div class="error-message">
+          <%= error[0] %>
+        </div>
+      <% } %>
     <form action="/login" method="POST">
         <!-- Username Input -->
         <div class="inputbox">
