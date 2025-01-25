@@ -44,8 +44,8 @@ This project is a user authentication system that uses Node.js, Express.js, Post
 - 3. Database Setup
 - 4. Environment Variables
 - 5. Execution Steps
-- 5. Folder Structur
-- 6. Related
+- 6. Folder Structur
+- 7. Related
 
 
 ## 1. Installation
@@ -119,21 +119,30 @@ Start the server
 
 project/
 │
-├── src/
-│   ├── views/            # EJS templates
-│   ├── routes/           # Route handlers
-│   ├── controllers/      # Business logic
-│
-├── public/               # Static files (CSS, JS, images)
-│   ├── css/              # Stylesheets
-│   ├── images/           # Images
-│
-├── .env                  # Environment variables
-├── package.json          # Dependencies and scripts
-├── index.js              # Main server file
-└── README.md             # Project documentation
 
-## Related
+├── src/
+
+       ├── views/            # EJS templates
+
+       ├── routes/           # Route handlers
+
+       ├── controllers/      # Business logic
+    
+
+├── public/               # Static files (CSS, JS, images)
+
+       ├── css/              # Stylesheets
+
+       ├── images/           # Images
+│── .env                  # Environment variables
+
+├── package.json          # Dependencies and scripts
+
+├── index.js              # Main server file
+
+├── README.md             # Project documentation
+
+## 7. Related
 
 Here are some related referance
 
@@ -145,4 +154,6 @@ Here are some related referance
 
 [Awesome README](https://github.com/)
 
+## License
 
+[Manikandan Pandian](https://github.com/batman8056)
