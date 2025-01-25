@@ -39,14 +39,14 @@ This project is a user authentication system that uses Node.js, Express.js, Post
 
 ## Table of Contents
 
-- Installation
-- Prerequisites
-- Database Setup
-- Environment Variables
-- Execution Steps
+- 1. Installation
+- 2. Prerequisites
+- 3. Database Setup
+- 4. Environment Variables
+- 5. Execution Steps
 
 
-## Installation
+## 1. Installation
 
 Run the following command to install the required dependencies:
 
@@ -55,12 +55,12 @@ Run the following command to install the required dependencies:
   npm install
 ```
     
-## Prerequisites
+## 2. Prerequisites
 
 - `1. Install Node.js.`
 - `2. Install PostgreSQL.`
 - `3. Set up Google OAuth credentials by following the Google OAuth tutorial.`
-## Database Setup
+## 3. Database Setup
 
 - Start PostgreSQL and create a new database:
  `CREATE DATABASE your_database_name;`
@@ -77,7 +77,7 @@ Run the following command to install the required dependencies:
 );`
 
 
-## Environment Variables
+## 4. Environment Variables
 -  Create a .env file in the root directory and configure the following variables:
 
 - `GOOGLE_CLIENT_ID="your-google-client-id"`
@@ -88,7 +88,7 @@ Run the following command to install the required dependencies:
 - `PG_DATABASE="your-database-name"`
 - `PG_PASSWORD="your-postgres-password"`
 - `PG_PORT="5432"`
-## Execution Steps
+## 5. Execution Steps
 
 Clone the project
 
@@ -119,12 +119,12 @@ Start the server
 
 Here are some related referance
 
-[Awesome README](https://github.com/matiassingers/awesome-readme)
+[Awesome README](https://github.com/)
 
-[Awesome README](https://github.com/matiassingers/awesome-readme)
+[Awesome README](https://github.com/)
 
-[Awesome README](https://github.com/matiassingers/awesome-readme)
+[Awesome README](https://github.com/)
 
-[Awesome README](https://github.com/matiassingers/awesome-readme)
+[Awesome README](https://github.com/)
 
 
