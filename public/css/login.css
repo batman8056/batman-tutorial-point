@@ -125,11 +125,48 @@ body {
 .signup-link:hover {
     color: #0056b3;
 }
-a {
-    text-decoration: none;
-    color: #007bff;
+.btn-google {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 12px;
+    background: #db4437;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-google:hover {
+    background: #a93428;
+}
+
+.btn-google i {
+    margin-right: 8px;
+    font-size: 16px;
+}
+/* Divider */
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.divider span {
+    margin: 0 10px;
     font-size: 14px;
-    transition: color 0.3s ease;
+    color: #777;
+}
+
+.divider:before,
+.divider:after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #ccc;
 }
 /* Responsive Design */
 @media (max-width: 768px) {

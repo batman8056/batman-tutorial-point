@@ -137,6 +137,27 @@ body {
 .form-container a:hover {
     color: #0056b3;
 }
+/* Divider */
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.divider span {
+    margin: 0 10px;
+    font-size: 14px;
+    color: #777;
+}
+
+.divider:before,
+.divider:after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #ccc;
+}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
