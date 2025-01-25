@@ -59,9 +59,9 @@ Run the following command to install the required dependencies:
     
 ## 2. Prerequisites
 
-- `1. Install Node.js.`
-- `2. Install PostgreSQL.`
-- `3. Set up Google OAuth credentials by following the Google OAuth tutorial.`
+- `1. Install `[Node.js.](https://nodejs.org/en)
+- `2. Install `[PostgreSQL.](https://www.postgresql.org/download/)
+- `3. Set up Google OAuth credentials by following the' [Google OAuth tutorial.](https://www.passportjs.org/tutorials/google/register/)
 ## 3. Database Setup
 
 - Start PostgreSQL and create a new database:
