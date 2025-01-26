@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User Profile</title>
+    <link rel="stylesheet" href="./css/update-profile.css">
+</head>
+<body>
+    <form action="/update-profile" method="POST" >
+                <div class="profile-container">
+                    <!-- Profile Image Section -->
+                    <div class="profile-header">
+                        <div class="profile-avatar-container">
+                            <!-- Displaying avatar or default image -->
+                            <img src="<%= locals.avatar || '/icon/avatar.png' %>" alt="Profile Avatar" class="profile-avatar">
+                            <input type="file" name="avatar" class="input-edit">
+                        </div>
+
+                        <!-- Email input -->
+                        <input type="email" name="email" value="<%= locals.email %>" class="input-edit user-email">
+                        </div>
+
+                <!-- Profile Details Section -->
+                <div class="profile-details">
+                    <h2>Personal Information</h2>
+                    <div class="info-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" value="<%= locals.username || 'Batman' %>" class="input-edit">
+                    </div>
+                    <div class="info-group">
+                        <label for="dob">Date of Birth:</label>
+                        <!-- Date input, make sure locals.dob is in the correct format -->
+                        <input type="date" name="dob" id="dob" value="<%= locals.dob %>" class="input-edit">
+                    </div>
+                    <div class="info-group">
+                        <label for="gender">Gender:</label>
+                        <!-- Gender select with selected option based on current gender -->
+                        <select name="gender" id="gender" class="input-edit">
+                            <option value="male" <%= locals.gender === 'male' ? 'selected' : '' %>>Male</option>
+                            <option value="female" <%= locals.gender === 'female' ? 'selected' : '' %>>Female</option>
+                        </select>
+                    </div>
+                    
+
+                    <!-- Submit Button -->
+                    <div class="actions">
+                        <button type="submit" class="btn-submit">Save Changes</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

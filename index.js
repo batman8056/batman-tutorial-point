@@ -83,18 +83,64 @@ app.get('/signup', (req, res) => {
     });
 });
 
-app.get('/profile',async (req, res) => {
-  res.render('profile.ejs')
-});
 
-app.get("/index", (req, res) => {
+app.get("/index",async (req, res) => {
   // console.log(req.user);
   if (req.isAuthenticated()){
-    res.render("index.ejs");
+    try {
+      const result = await db.query(
+        `SELECT username FROM users_profiles WHERE email = $1`,
+        [req.user.email]
+      );
+      console.log(result);
+      const username = result.rows[0].username;
+      if (username) {
+        res.render("index.ejs", { username: username });
+      } else {
+        res.render("index.ejs", { username: "user name not found" });
+      }
+    } catch (err) {
+      console.log(err);
+    }
   }else{
     res.redirect("/login");
   }
 })
+
+//get user profile information
+app.get("/update-profile", async function (req, res) {
+  if (req.isAuthenticated()) {
+    try {
+      const result = await db.query(
+        `SELECT username, email, dob::TEXT AS dob, gender FROM users_profiles WHERE email = $1`,
+        [req.user.email]
+      );
+      console.log(result);
+      const userDetails = result.rows[0];
+      console.log("userDetails",userDetails)
+      if (userDetails) {
+        res.render("update-profile.ejs", { 
+          username: userDetails.username,
+          email: userDetails.email,
+          dob: userDetails.dob ,
+          gender: userDetails.gender
+         });
+      } else {
+        res.render("update-profile.ejs", { 
+          username: "user name not found",
+          dob: "Date of Birth not present",
+          gender: "Gender not provide"
+         });
+      }
+    } catch (err) {
+      console.log(err);
+      res.status(500).send("Error fetching profile information.");
+    }
+  } else {
+    res.redirect("/login");
+  }
+});
+
 app.get("/logout", (req, res) => {
   req.logout(function (err) {
     if (err) {
@@ -165,6 +211,27 @@ app.post("/signin-form", async (req, res) => {
   }
 });
 
+//update profile information
+app.post("/update-profile", async function (req, res) {
+  console.log("Request body:", req.body); // Log the incoming request body
+  console.log(req.user);
+
+  const submittedUsername = req.body.username;
+  const submittedDob = new Date(req.body.dob).toISOString().split('T')[0];;
+  const submittedGender = req.body.gender;
+  console.log("Updating DOB with:", submittedDob);
+
+  try {
+    await db.query(
+      `UPDATE users_profiles SET username = $1, dob = $2, gender = $3 WHERE email = $4`, 
+      [submittedUsername, submittedDob, submittedGender, req.user.email]
+    );
+    res.redirect("/update-profile");  // Redirect to the update-profile page after the update
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Error updating profile.");
+  }
+});
 
 //username and password we directly getting req data from login.ejs
 passport.use("local",
@@ -195,7 +262,7 @@ passport.use("local",
   }
 })
 );
-
+//oAuth Google auth
 passport.use("google", 
   new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,

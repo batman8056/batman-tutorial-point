@@ -17,7 +17,7 @@
         <div class="px-3 py-2 text-bg-light border-bottom bg-body-tertiary ">
           <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-              <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+              <a href="#" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
                 <img src="./icon/logo.png" height="100" width="280"> <h3 class="text-body-emphasis card-title ">  </h3>
                 
               </a>
@@ -49,9 +49,11 @@
                   </a>
                 </li>
                 <li>
-                  <a href="/profile" class="nav-link text-secondary">
+                   <form action="/update-profile" method="GET">
+                  <a href="/update-profile" class="nav-link text-secondary">
+                  </form>
                     <img class="bi d-block mx-auto mb-1" src="./icon/avatar.png" height="28" width="30">
-                    Profile
+                    <%= locals.username %> 
                   </a>
                 </li>
               </ul>
