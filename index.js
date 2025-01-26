@@ -29,6 +29,7 @@ app.set("views", path.join(__dirname, "src", "views"));
 app.use(express.static(path.join(__dirname, "public")));
 //Use middleware like body-parser (now built into Express) to parse incoming request data
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(flash());
 
 // created a session 
 app.use(session({
@@ -39,7 +40,7 @@ app.use(session({
     maxAge: 1000 * 60 *60 * 24,
   }
 }))
-app.use(flash());
+
 app.use((req, res, next) => {
   res.locals.error = req.flash("error");
   next();
@@ -83,18 +84,65 @@ app.get('/signup', (req, res) => {
     });
 });
 
-app.get('/profile',async (req, res) => {
-  res.render('profile.ejs')
-});
 
-app.get("/index", (req, res) => {
+app.get("/index",async (req, res) => {
   // console.log(req.user);
   if (req.isAuthenticated()){
-    res.render("index.ejs");
+    try {
+      const result = await db.query(
+        `SELECT username FROM users_profiles WHERE email = $1`,
+        [req.user.email]
+      );
+      console.log(result);
+      const username = result.rows[0].username;
+      if (username) {
+        res.render("index.ejs", { username: username });
+      } else {
+        res.render("index.ejs", { username: "user name not found" });
+      }
+    } catch (err) {
+      console.log(err);
+      res.status(500).send("Internal server error");
+    }
   }else{
     res.redirect("/login");
   }
 })
+
+//get user profile information
+app.get("/update-profile", async function (req, res) {
+  if (req.isAuthenticated()) {
+    try {
+      const result = await db.query(
+        `SELECT username, email, dob::TEXT AS dob, gender FROM users_profiles WHERE email = $1`,
+        [req.user.email]
+      );
+      console.log(result);
+      const userDetails = result.rows[0];
+      console.log("userDetails",userDetails)
+      if (userDetails) {
+        res.render("update-profile.ejs", { 
+          username: userDetails.username,
+          email: userDetails.email,
+          dob: userDetails.dob ,
+          gender: userDetails.gender
+         });
+      } else {
+        res.render("update-profile.ejs", { 
+          username: "user name not found",
+          dob: "Date of Birth not present",
+          gender: "Gender not provide"
+         });
+      }
+    } catch (err) {
+      console.log(err);
+      res.status(500).send("Error fetching profile information.");
+    }
+  } else {
+    res.redirect("/login");
+  }
+});
+
 app.get("/logout", (req, res) => {
   req.logout(function (err) {
     if (err) {
@@ -108,18 +156,18 @@ app.post("/login",
   successRedirect: "/index",
   failureRedirect: "/login",
   failureFlash: true,
-})
-);
+}));
 
 app.get("/auth/google", 
   passport.authenticate("google",{
   scope:["profile","email"],
-})
-);
-app.get("/auth/google/secrets", passport.authenticate("google",{
+}));
+
+app.get("/auth/google/secrets", 
+  passport.authenticate("google",{
   successRedirect: "/index",
   failureRedirect: "/login"
-}))
+}));
 
 app.post("/signin-form", async (req, res) => {
   const regUserName = req.body.username
@@ -149,12 +197,12 @@ app.post("/signin-form", async (req, res) => {
         } else {
           console.log("Hashed Password:", hash);
           const result = await db.query(
-            "INSERT INTO users_profiles (username, email, password, dob, gender) VALUES ($1, $2, $3, $4, $5)",
+            "INSERT INTO users_profiles (username, email, password, dob, gender) VALUES ($1, $2, $3, $4, $5) RETURNING *",
             [regUserName, regEmail, hash, regDob, regGender]
           );
           const user = result.rows[0];
-        req.login(user, (err) =>{
-          console.log(err);
+          req.login(user, (err) =>{
+          console.log("Signup successful. Redirecting to index.");
           res.redirect("/index")
         })
         }
@@ -162,9 +210,32 @@ app.post("/signin-form", async (req, res) => {
     }
   }catch(err){
     console.log(err);
+    res.status(500).send("Internal server error");
   }
 });
 
+//update profile information
+app.post("/update-profile", async function (req, res) {
+  console.log("Request body:", req.body); // Log the incoming request body
+  console.log(req.user); // Log the incoming user req
+
+  const submittedUsername = req.body.username;
+  // Check if dob is provided, if not, set it to null
+  const submittedDob = req.body.dob ? new Date(req.body.dob).toISOString().split('T')[0]: null;
+  const submittedGender = req.body.gender;
+  console.log("Updating DOB with:", submittedDob);
+
+  try {
+    await db.query(
+      `UPDATE users_profiles SET username = $1, dob = $2, gender = $3 WHERE email = $4`, 
+      [submittedUsername, submittedDob, submittedGender, req.user.email]
+    );
+    res.redirect("/update-profile");  // Redirect to the update-profile page after the update
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Error updating profile.");
+  }
+});
 
 //username and password we directly getting req data from login.ejs
 passport.use("local",
@@ -183,6 +254,7 @@ passport.use("local",
           if (result) {
             return cb(null, user);
           } else {
+            //Error with password check
             return cb(null, false, { message: "Incorrect password."});
           }
         }
@@ -193,9 +265,8 @@ passport.use("local",
   } catch (err) {
     return cb(err);
   }
-})
-);
-
+}));
+//oAuth Google auth
 passport.use("google", 
   new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
