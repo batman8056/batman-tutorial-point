@@ -29,6 +29,7 @@ app.set("views", path.join(__dirname, "src", "views"));
 app.use(express.static(path.join(__dirname, "public")));
 //Use middleware like body-parser (now built into Express) to parse incoming request data
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(flash());
 
 // created a session 
 app.use(session({
@@ -39,7 +40,7 @@ app.use(session({
     maxAge: 1000 * 60 *60 * 24,
   }
 }))
-app.use(flash());
+
 app.use((req, res, next) => {
   res.locals.error = req.flash("error");
   next();
@@ -101,6 +102,7 @@ app.get("/index",async (req, res) => {
       }
     } catch (err) {
       console.log(err);
+      res.status(500).send("Internal server error");
     }
   }else{
     res.redirect("/login");
@@ -195,12 +197,12 @@ app.post("/signin-form", async (req, res) => {
         } else {
           console.log("Hashed Password:", hash);
           const result = await db.query(
-            "INSERT INTO users_profiles (username, email, password, dob, gender) VALUES ($1, $2, $3, $4, $5)",
+            "INSERT INTO users_profiles (username, email, password, dob, gender) VALUES ($1, $2, $3, $4, $5) RETURNING *",
             [regUserName, regEmail, hash, regDob, regGender]
           );
           const user = result.rows[0];
-        req.login(user, (err) =>{
-          console.log(err);
+          req.login(user, (err) =>{
+          console.log("Signup successful. Redirecting to index.");
           res.redirect("/index")
         })
         }
@@ -208,13 +210,14 @@ app.post("/signin-form", async (req, res) => {
     }
   }catch(err){
     console.log(err);
+    res.status(500).send("Internal server error");
   }
 });
 
 //update profile information
 app.post("/update-profile", async function (req, res) {
   console.log("Request body:", req.body); // Log the incoming request body
-  console.log(req.user);
+  console.log(req.user); // Log the incoming user req
 
   const submittedUsername = req.body.username;
   const submittedDob = new Date(req.body.dob).toISOString().split('T')[0];;
