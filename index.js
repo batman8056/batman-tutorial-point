@@ -156,18 +156,18 @@ app.post("/login",
   successRedirect: "/index",
   failureRedirect: "/login",
   failureFlash: true,
-})
-);
+}));
 
 app.get("/auth/google", 
   passport.authenticate("google",{
   scope:["profile","email"],
-})
-);
-app.get("/auth/google/secrets", passport.authenticate("google",{
+}));
+
+app.get("/auth/google/secrets", 
+  passport.authenticate("google",{
   successRedirect: "/index",
   failureRedirect: "/login"
-}))
+}));
 
 app.post("/signin-form", async (req, res) => {
   const regUserName = req.body.username
@@ -253,6 +253,7 @@ passport.use("local",
           if (result) {
             return cb(null, user);
           } else {
+            //Error with password check
             return cb(null, false, { message: "Incorrect password."});
           }
         }
@@ -263,8 +264,7 @@ passport.use("local",
   } catch (err) {
     return cb(err);
   }
-})
-);
+}));
 //oAuth Google auth
 passport.use("google", 
   new GoogleStrategy({
