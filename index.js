@@ -220,7 +220,8 @@ app.post("/update-profile", async function (req, res) {
   console.log(req.user); // Log the incoming user req
 
   const submittedUsername = req.body.username;
-  const submittedDob = new Date(req.body.dob).toISOString().split('T')[0];;
+  // Check if dob is provided, if not, set it to null
+  const submittedDob = req.body.dob ? new Date(req.body.dob).toISOString().split('T')[0]: null;
   const submittedGender = req.body.gender;
   console.log("Updating DOB with:", submittedDob);
 
